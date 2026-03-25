@@ -1,0 +1,55 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  background: #1979d3;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
+
+.header h1 {
+  color: white;
+  margin: 0;
+  font-size: 20px;
+}
+
+.header nav {
+  margin-left: 40px;
+  display: flex;
+  gap: 20px;
+}
+
+.header nav a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  padding: 20px 0;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.header nav a:hover {
+  color: white;
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+}
+
+.header nav a.active {
+  color: white;
+  border-bottom: 3px solid white;
+  font-weight: 600;
+}
+
+.content {
+  flex: 1;
+  overflow: auto;
+  padding: 20px;
+}

@@ -1,0 +1,13 @@
+<div class="layout">
+  <header class="header">
+    <h1>CSP POC</h1>
+    <nav>
+      <a routerLink="/data" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Data Table</a>
+      <a routerLink="/charts" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Charts</a>
+      <a routerLink="/map" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Map</a>
+    </nav>
+  </header>
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

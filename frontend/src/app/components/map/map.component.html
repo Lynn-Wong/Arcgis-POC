@@ -1,0 +1,9 @@
+<div class="map-controls">
+  <button (click)="switchView('2d')">2D View</button>
+  <button (click)="switchView('3d')">3D View</button>
+  <button (click)="addMarker()">Add Marker</button>
+  <button (click)="flyToBeijing()">Fly to Beijing</button>
+  <button (click)="changeBasemap()">Change Basemap</button>
+  <button (click)="clearGraphics()">Clear Markers</button>
+</div>
+<div #mapContainer id="map" style="width: 100%; height: 500px;"></div>

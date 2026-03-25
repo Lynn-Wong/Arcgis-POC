@@ -1,0 +1,26 @@
+:host {
+  display: block;
+}
+
+.map-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.map-controls button {
+  padding: 8px 16px;
+  background: #1979d3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.map-controls button:hover {
+  background: #1569b3;
+}
+
+#map {
+  border: 1px solid #eee;
+}
