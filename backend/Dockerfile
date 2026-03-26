@@ -1,5 +1,5 @@
 # 1. 选择 Node 基础镜像，推荐 alpine 轻量化版本
-FROM node:18-alpine
+FROM node:20-alpine
 
 # 2. 设置容器内的工作目录，后续命令都在这个目录执行
 WORKDIR /app
