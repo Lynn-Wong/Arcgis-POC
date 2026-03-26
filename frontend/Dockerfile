@@ -1,5 +1,6 @@
 FROM node:18-alpine AS build-stage
 WORKDIR /app
+RUN npm install -g @angular/cli@18 --registry=https://registry.npmmirror.com
 COPY package*.json ./
 RUN npm install --registry=https://registry.npmmirror.com
 COPY . .
