@@ -55,7 +55,8 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   private async initMap() {
     this.isLoading.set(true);
     this.graphicsLayer = new GraphicsLayer();
-    esriConfig.assetsPath = "./assets/arcgismap";
+    // esriConfig.assetsPath = "./assets/arcgismap";
+    esriConfig.assetsPath = "assets/arcgismap";
     this.map = new Map({
       basemap: this.selectedBasemap,
       layers: [this.graphicsLayer]
