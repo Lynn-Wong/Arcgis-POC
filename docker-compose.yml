@@ -21,22 +21,22 @@ services:
     networks:
       - app_network
   
-  # ==================== Nginx 代理 ====================
-  nginx-proxy:
-    image: nginx:alpine
-    container_name: nginx_proxy_container
-    restart: always
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf  # 挂载Nginx配置文件
-      #- ./nginx/ssl:/etc/nginx/ssl        # 挂载HTTPS证书（可选）
-    depends_on:
-      - frontend
-      - backend
-    networks:
-      - app_network
+  # # ==================== Nginx 代理 ====================
+  # nginx-proxy:
+  #   image: nginx:alpine
+  #   container_name: nginx_proxy_container
+  #   restart: always
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/conf.d/default.conf  # 挂载Nginx配置文件
+  #     #- ./nginx/ssl:/etc/nginx/ssl        # 挂载HTTPS证书（可选）
+  #   depends_on:
+  #     - frontend
+  #     - backend
+  #   networks:
+  #     - app_network
 
 # 自定义网络，让所有容器在同一网络下，可通过容器名互相访问
 networks:
