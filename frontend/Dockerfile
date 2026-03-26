@@ -1,4 +1,4 @@
-FROM nginx:alpine
+FROM nginx:1.25
 
 RUN rm -f /etc/nginx/nginx.conf
 
