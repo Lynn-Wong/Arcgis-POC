@@ -1,0 +1,1 @@
+var n=Symbol("ImageElementInstance"),t=Symbol("VideoElementInstance");function o(e){return e!=null&&typeof e=="object"&&n in e}function l(e){return e!=null&&typeof e=="object"&&t in e}function m(e){return o(e)||l(e)}export{n as a,t as b,l as c,m as d};

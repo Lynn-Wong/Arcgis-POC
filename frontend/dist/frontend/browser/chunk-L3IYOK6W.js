@@ -1,0 +1,1 @@
+import{l as r}from"./chunk-MVYKOXCV.js";import{C as t}from"./chunk-WENEM4NK.js";var i=class s extends r{constructor(e,n,x,o,p=3){super(o,p),this.previousVertex=e,this.centerVertex=n,this.nextVertex=x}equals(e){return e instanceof s&&t(this.previousVertex,e.previousVertex)&&t(this.centerVertex,e.centerVertex)&&t(this.nextVertex,e.nextVertex)}};export{i as a};

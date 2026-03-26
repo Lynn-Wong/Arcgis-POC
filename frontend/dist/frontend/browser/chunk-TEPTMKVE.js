@@ -1,0 +1,24 @@
+import{a as U}from"./chunk-YEMBISS4.js";import{a as E}from"./chunk-IBO6ILUH.js";import{a as q}from"./chunk-RXFGTBOJ.js";import{f as g}from"./chunk-KFI4I766.js";import{a as w}from"./chunk-O5NYEJB2.js";import{a as T}from"./chunk-BAC6RMAZ.js";import{a as C}from"./chunk-2NXJIMQ2.js";import{a as _}from"./chunk-L7NOU4T2.js";import{a as L}from"./chunk-H2ASV3YO.js";import{a as S}from"./chunk-45K2AY22.js";import{a as u,b as x}from"./chunk-UUP4FBYC.js";import{G as f,j as a}from"./chunk-JOZQHQKB.js";var c=class{constructor(t){this._material=t.material,this._techniques=t.techniques,this._output=t.output}dispose(){}get _stippleTextures(){return this._techniques.context?.stippleTextures}get _markerTextures(){return this._techniques.context?.markerTextures}getTechnique(t,e){return this._techniques.get(t,this._material.getConfiguration(this._output,e))}ensureResources(t){return 2}};var y=class extends c{constructor(t){super(t),this._numLoading=0,this._disposed=!1,this._textures=t.textures,this.updateTexture(t.textureId),this._acquire(t.normalTextureId,e=>this._textureNormal=e),this._acquire(t.emissiveTextureId,e=>this._textureEmissive=e),this._acquire(t.occlusionTextureId,e=>this._textureOcclusion=e),this._acquire(t.metallicRoughnessTextureId,e=>this._textureMetallicRoughness=e)}dispose(){super.dispose(),this._texture=a(this._texture),this._textureNormal=a(this._textureNormal),this._textureEmissive=a(this._textureEmissive),this._textureOcclusion=a(this._textureOcclusion),this._textureMetallicRoughness=a(this._textureMetallicRoughness),this._disposed=!0}ensureResources(t){return this._numLoading===0?2:1}get textureBindParameters(){return new h(this._texture?.glTexture??null,this._textureNormal?.glTexture??null,this._textureEmissive?.glTexture??null,this._textureOcclusion?.glTexture??null,this._textureMetallicRoughness?.glTexture??null)}updateTexture(t){this._texture!=null&&t===this._texture.id||(this._texture=a(this._texture),this._acquire(t,e=>this._texture=e))}_acquire(t,e){if(t==null)return void e(null);let i=this._textures.acquire(t);if(f(i))return++this._numLoading,void i.then(o=>{if(this._disposed)return a(o),void e(null);e(o)}).finally(()=>--this._numLoading);e(i)}},d=class extends _{constructor(t=null){super(),this.textureEmissive=t}},h=class extends d{constructor(t,e,i,o,m,n,l){super(i),this.texture=t,this.textureNormal=e,this.textureOcclusion=o,this.textureMetallicRoughness=m,this.scale=n,this.normalTextureTransformMatrix=l}};function R(s){s.fragment.code.add(u`vec4 textureAtlasLookup(sampler2D tex, vec2 textureCoordinates, vec4 atlasRegion) {
+vec2 atlasScale = atlasRegion.zw - atlasRegion.xy;
+vec2 uvAtlas = fract(textureCoordinates) * atlasScale + atlasRegion.xy;
+float maxdUV = 0.125;
+vec2 dUVdx = clamp(dFdx(textureCoordinates), -maxdUV, maxdUV) * atlasScale;
+vec2 dUVdy = clamp(dFdy(textureCoordinates), -maxdUV, maxdUV) * atlasScale;
+return textureGrad(tex, uvAtlas, dUVdx, dUVdy);
+}`)}function V(s,t){let{textureCoordinateType:e}=t;if(e===0||e===3)return;s.include(E,t);let i=e===2;i&&s.include(R),s.fragment.code.add(u`
+    vec4 textureLookup(sampler2D tex, vec2 uv) {
+      return ${i?"textureAtlasLookup(tex, uv, vuvRegion)":"texture(tex, uv)"};
+    }
+  `)}var se=1,F=1;function ie(s,t){if(!g(t.output))return;s.fragment.include(q);let{emissionSource:e,hasEmissiveTextureTransform:i,bindType:o}=t,m=e===3||e===4||e===5;m&&(s.include(V,t),s.fragment.uniforms.add(o===1?new S("texEmission",r=>r.textureEmissive):new w("texEmission",r=>r.textureEmissive)));let n=e===2||m;n&&s.fragment.uniforms.add(o===1?new C("emissiveBaseColor",r=>r.emissiveBaseColor):new T("emissiveBaseColor",r=>r.emissiveBaseColor));let l=e!==0;l&&!(e===7||e===6||e===4||e===5)&&s.fragment.uniforms.add(o===1?new L("emissiveStrength",r=>r.emissiveStrength):new U("emissiveStrength",r=>r.emissiveStrength));let v=e===7,p=e===5,b=e===1||e===6||v;s.fragment.code.add(u`
+    vec4 getEmissions(vec3 symbolColor) {
+      vec4 emissions = ${n?p?"emissiveSource == 0 ? vec4(emissiveBaseColor, 1.0): vec4(linearizeGamma(symbolColor), 1.0)":"vec4(emissiveBaseColor, 1.0)":b?v?"emissiveSource == 0 ? vec4(0.0): vec4(linearizeGamma(symbolColor), 1.0)":"vec4(linearizeGamma(symbolColor), 1.0)":"vec4(0.0)"};
+      ${x(m,`${x(p,`if(emissiveSource == 0) {
+              vec4 emissiveFromTex = textureLookup(texEmission, ${i?"emissiveUV":"vuv0"});
+              emissions *= vec4(linearizeGamma(emissiveFromTex.rgb), emissiveFromTex.a);
+           }`,`vec4 emissiveFromTex = textureLookup(texEmission, ${i?"emissiveUV":"vuv0"});
+           emissions *= vec4(linearizeGamma(emissiveFromTex.rgb), emissiveFromTex.a);`)}
+        emissions.w = emissions.rgb == vec3(0.0) ? 0.0: emissions.w;`)}
+      ${x(l,`emissions.rgb *= emissiveStrength * ${u.float(F)};`)}
+      return emissions;
+    }
+  `)}export{c as a,y as b,h as c,V as d,se as e,ie as f};

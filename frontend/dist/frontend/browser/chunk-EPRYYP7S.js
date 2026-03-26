@@ -1,0 +1,1 @@
+import{A as a,a as e,z as t}from"./chunk-ETQTHKOT.js";function n(i){return typeof i=="object"&&i!=null&&"loaded"in i&&i.loaded===!0&&"type"in i}function d(i){return!(!n(i)||!t(i)?.operations?.supportsEditing||"editingEnabled"in i&&!a(i)||e(i))}export{d as a};

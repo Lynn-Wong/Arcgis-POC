@@ -1,0 +1,1 @@
+import{a as t}from"./chunk-VHJTF27C.js";function r(e){if(typeof e=="string")return e.toLowerCase();if("name"in e)return e.name.toLowerCase();if(typeof e.value!="string")throw new t(null,"InvalidIdentifier",null);return e.value.toLowerCase()}var n=Object.freeze({aborted:!1});export{r as a,n as b};

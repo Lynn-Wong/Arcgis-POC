@@ -1,0 +1,1 @@
+var r=class{constructor(s,t=0,a=0,o=0,i=0,n=null){this.usedMemory=s,this.displayedFeatures=t,this.totalFeatures=a,this.maximumFeatures=o,this.nodes=i,this.core=n}};function u(e){return"performanceInfo"in e}export{r as a,u as b};

@@ -1,0 +1,1 @@
+import{a}from"./chunk-MCRH4F7B.js";import{b as s,d as i}from"./chunk-M6CCJNZL.js";var n=class extends a{intersect(r,o,e,t,l,m){return s(r,e,t,l,void 0,m)}intersectDraped(r,o,e,t){return i(e[0],e[1],r,t)}};export{n as a};

@@ -1,0 +1,1 @@
+import{a as c}from"./chunk-YFGQSRMO.js";var a=class{constructor(r){this._rctx=r,this._store=new Map}dispose(){this._store.forEach(r=>r.dispose()),this._store.clear()}acquire(r,e,o,n){let i=r+e+JSON.stringify(Array.from(o.entries())),t=this._store.get(i);if(t!=null)return t.ref(),t;let s=new c(this._rctx,r,e,o,n);return s.ref(),this._store.set(i,s),s}get test(){}};export{a};

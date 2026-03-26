@@ -1,0 +1,1 @@
+function o(a){let n=3.141592653589793,t=.3183098861837907;a.constants.add("PI","float",n),a.constants.add("LIGHT_NORMALIZATION","float",t),a.constants.add("INV_PI","float",t),a.constants.add("HALF_PI","float",1.570796326794897),a.constants.add("TWO_PI","float",6.28318530717958)}export{o as a};

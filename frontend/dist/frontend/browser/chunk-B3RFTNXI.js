@@ -1,0 +1,6 @@
+import{a as F}from"./chunk-H5WX5TXE.js";import{a as p}from"./chunk-2YSWRJRO.js";import{a as m}from"./chunk-L7NOU4T2.js";import{a as u}from"./chunk-JMYO2YOI.js";import{a as d}from"./chunk-24Z55BQA.js";import{a as g}from"./chunk-QF5M5KTV.js";import{a as c}from"./chunk-H2ASV3YO.js";import{a as l}from"./chunk-45K2AY22.js";import{a as e,b as f}from"./chunk-UUP4FBYC.js";var o=class extends m{constructor(){super(...arguments),this.opacity=1}};function h(t){let r=new g,{blitEmissiveMode:b,blitMode:x,hasOpacityFactor:n}=t;r.include(p),r.fragment.uniforms.add(new l("tex",a=>a.texture)),n&&r.fragment.uniforms.add(new c("opacity",a=>a.opacity));let s=x===3;s&&(r.fragment.uniforms.add(new d("nearFar",a=>a.camera.nearFar)),r.fragment.include(u),r.fragment.include(F));let i=b===1;return i&&(r.outputs.add("fragColor","vec4",0),r.outputs.add("fragEmission","vec4",1)),r.fragment.main.add(e`
+    ${s?e`
+          float normalizedLinearDepth = (-linearDepthFromTexture(tex, uv) - nearFar[0]) / (nearFar[1] - nearFar[0]);
+          fragColor = float2rgba(normalizedLinearDepth);`:e`
+          fragColor = texture(tex, uv) ${n?"* opacity":""};`}
+    ${f(i,"fragEmission = vec4(0.0, 0.0, 0.0, fragColor.a);")}`),r}var z=Object.freeze(Object.defineProperty({__proto__:null,CompositingPassParameters:o,build:h},Symbol.toStringTag,{value:"Module"}));export{o as a,h as b,z as c};
