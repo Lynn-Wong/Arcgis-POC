@@ -1,5 +1,4 @@
-FROM nginx:1.25
-
+FROM registry.chengdu.local/osp/nginx:1.21.
 RUN rm -f /etc/nginx/nginx.conf
 
 COPY nginx.conf /etc/nginx/nginx.conf
