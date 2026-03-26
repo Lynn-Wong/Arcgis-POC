@@ -1,1 +1,0 @@
-import{a as e,b as o}from"./chunk-SOHYSJLF.js";var t=class{static{this.instance=new o("Etc/UTC")}};function s(n){return n instanceof e?n===t.instance:n?.toString().toLowerCase()==="unknown"}function a(n){return s(n)?t.instance:n}export{t as a,s as b,a as c};

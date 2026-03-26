@@ -1,1 +1,0 @@
-import{ta as t}from"./chunk-2RWAQZFO.js";import{a as e,f as a}from"./chunk-YF6DGJ2Q.js";function i(r,n){return a(this,null,function*(){let{data:o}=yield t(r,e({responseType:"image"},n));return o})}export{i as a};

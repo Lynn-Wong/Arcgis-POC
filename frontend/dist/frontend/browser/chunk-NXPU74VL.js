@@ -1,1 +1,0 @@
-function r(){return[1,0,0,1,0,0]}function c(e){return[e[0],e[1],e[2],e[3],e[4],e[5]]}function l(e,t,n,o,a,u){return[e,t,n,o,a,u]}var s=r(),f=Object.freeze(Object.defineProperty({__proto__:null,IDENTITY:s,clone:c,create:r,fromValues:l},Symbol.toStringTag,{value:"Module"}));export{r as a,c as b};

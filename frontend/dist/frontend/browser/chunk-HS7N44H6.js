@@ -1,1 +1,0 @@
-import{c as o}from"./chunk-RSIO3BAI.js";var i=o().vec3f("position").freeze(),t=o().vec3f("position").vec2f16("uv0").freeze(),f=o().vec3f("position").vec4u8("color").freeze(),s=o().vec3f("position").vec2f("uv0").freeze(),v=o().vec3f("position").vec2f("uv0").vec4u8("olidColor").freeze();export{i as a,t as b,f as c,s as d,v as e};

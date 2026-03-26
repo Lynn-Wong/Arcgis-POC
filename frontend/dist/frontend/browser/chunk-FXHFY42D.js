@@ -1,1 +1,0 @@
-import{e as m}from"./chunk-GUE7GYYF.js";import{G as t}from"./chunk-JOZQHQKB.js";function d(e){return o=>{if(e.destroyed){let r=o(m);return t(r)?r:Promise.resolve(r)}if(e.immediate)return e.immediate.schedule(o);let i="No immediate scheduler";throw console.error(i),new Error(i)}}export{d as a};

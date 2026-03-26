@@ -1,1 +1,0 @@
-var o={sunny:.0022,rainy:.0022,cloudy:.0022,snowy:.0022,foggy:.0022},r=class{constructor(t){this.presets=t,this.presets=n(t)}},a={minDisperse:new r([.8,.12,.06,.02,0,0]),maxDisperse:new r([0,0,.06,.12,.25,.57])};function n(e,t=1){let s=e[0]+e[1]+e[2]+e[3]+e[4]+e[5];return s<=t?e:[e[0]/s,e[1]/s,e[2]/s,e[3]/s,e[4]/s,e[5]/s]}export{o as a,a as b,n as c};

@@ -1,1 +1,0 @@
-import{b as t}from"./chunk-4WZGQR2J.js";function o(r,e,n=t){return e||(e=new n),e===r||e.destroyed||(e.removeAll(),a(r)?e.addMany(r):r&&e.add(r)),e}function s(r){return r}function a(r){return r&&(Array.isArray(r)||"items"in r&&Array.isArray(r.items))}export{o as a,s as b};

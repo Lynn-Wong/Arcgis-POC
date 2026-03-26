@@ -1,3 +1,0 @@
-import{a as l}from"./chunk-2YSWRJRO.js";import{a}from"./chunk-L7NOU4T2.js";import{a as n}from"./chunk-QF5M5KTV.js";import{a as e}from"./chunk-45K2AY22.js";import{a as s}from"./chunk-UUP4FBYC.js";var t=class extends a{};function u(){let o=new n;return o.include(l),o.fragment.uniforms.add(new e("colorTexture",r=>r.color),new e("splatOutputColor",r=>r.splatColor)),o.fragment.main.add(s`vec4 color = texture(colorTexture, uv);
-vec4 splatColor = texture(splatOutputColor, uv);
-fragColor = splatColor + color * (1.0 - splatColor.a);`),o}var d=Object.freeze(Object.defineProperty({__proto__:null,GaussianSplatCompositionPassParameters:t,build:u},Symbol.toStringTag,{value:"Module"}));export{t as a,u as b,d as c};

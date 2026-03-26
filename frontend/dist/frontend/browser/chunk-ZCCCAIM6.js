@@ -1,1 +1,0 @@
-import{k as r,o as s,p as i,q as o}from"./chunk-5FGABSCC.js";var u=s(class extends i{constructor(){super(...arguments),this.key=r}render(t,e){return this.key=t,e}update(t,[e,m]){return e!==this.key&&(o(t),this.key=e),m}});export{u as a};
