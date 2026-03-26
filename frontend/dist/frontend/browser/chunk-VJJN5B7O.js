@@ -1,1 +1,0 @@
-import{t as a}from"./chunk-O4EIA6KJ.js";import{f as e}from"./chunk-YF6DGJ2Q.js";function r(i){return i[i.openProp||"open"]}function l(i){return e(this,null,function*(){yield i.updateComplete,r(i)?i.onBeforeOpen():i.onBeforeClose(),yield i.updateComplete,i.transitionEl&&(yield a(i.transitionEl,i.transitionProp)),r(i)?i.onOpen():i.onClose()})}export{l as a};
