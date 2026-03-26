@@ -8,6 +8,10 @@ services:
     ports:
      - "4200:4200" # ！！！宿主机端口:容器端口
     restart: always
+    volumes:
+     - type: bind
+       source: ./frontend/nginx.conf
+       target: /etc/nginx/nginx.conf
     networks:
       - app_network
 
