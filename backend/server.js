@@ -1,20 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const crypto = require('crypto');
-const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
-const CSP_NONCE = crypto.randomUUID();
-
-app.use((req, res, next) => {
-  res.setHeader(
-    'Content-Security-Policy',
-    `default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'nonce-${CSP_NONCE}'; style-src 'self' 'nonce-${CSP_NONCE}'; connect-src 'self' https://services.arcgis.com https://*.arcgis.com; img-src 'self' data: https://*.arcgis.com https://*.esri.com blob:; font-src 'self' https://*.arcgis.com;`
-  );
-  next();
-});
 
 app.use(cors());
 app.use(express.json());
@@ -101,13 +89,6 @@ app.get('/api/charts', (req, res) => {
   });
 });
 
-app.use(express.static(path.join(__dirname, '../frontend/dist/frontend/browser')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist/frontend/browser/index.html'));
-});
-
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-  console.log(`CSP NONCE enabled`);
+  console.log(`API server running at http://localhost:${PORT}`);
 });
