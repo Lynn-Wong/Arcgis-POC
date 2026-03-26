@@ -1,6 +1,9 @@
 import { Component, OnInit, AfterViewInit, inject, ElementRef, ViewChild, OnDestroy } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import * as echarts from 'echarts';
+import { SVGRenderer } from 'echarts/renderers';
+
+(echarts as unknown as { use: (plugins: unknown[]) => void }).use([SVGRenderer]);
 
 @Component({
   selector: 'app-charts',
@@ -30,7 +33,7 @@ export class ChartsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private initLineChart(data: any) {
-    this.lineInstance = echarts.init(this.lineChartRef.nativeElement);
+    this.lineInstance = echarts.init(this.lineChartRef.nativeElement, { renderer: 'svg' });
     this.lineInstance.setOption({
       tooltip: { trigger: 'axis' },
       legend: { data: data.series.map((s: any) => s.name) },
@@ -41,7 +44,7 @@ export class ChartsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private initBarChart(data: any) {
-    this.barInstance = echarts.init(this.barChartRef.nativeElement);
+    this.barInstance = echarts.init(this.barChartRef.nativeElement, { renderer: 'svg' });
     this.barInstance.setOption({
       tooltip: { trigger: 'axis' },
       legend: { data: data.series.map((s: any) => s.name) },
@@ -52,7 +55,7 @@ export class ChartsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private initPieChart(data: any) {
-    this.pieInstance = echarts.init(this.pieChartRef.nativeElement);
+    this.pieInstance = echarts.init(this.pieChartRef.nativeElement, { renderer: 'svg' });
     this.pieInstance.setOption({
       tooltip: { trigger: 'item' },
       series: [{
