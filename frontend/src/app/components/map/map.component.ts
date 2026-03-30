@@ -7,7 +7,7 @@ import Graphic from '@arcgis/core/Graphic';
 import Point from '@arcgis/core/geometry/Point';
 import PictureMarkerSymbol from '@arcgis/core/symbols/PictureMarkerSymbol';
 import TextSymbol from '@arcgis/core/symbols/TextSymbol';
-import esriConfig from "@arcgis/core/config";
+// import esriConfig from "@arcgis/core/config";
 
 @Component({
   selector: 'app-map',
@@ -52,11 +52,22 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly CENTER_LNG = 100.6;
   private readonly CENTER_LAT = -0.5;
 
+  private _setupCspNonce() {
+    const nonce = (window as any).__CSP_NONCE__;
+    if (nonce && !(window as any).dojoConfig?.cspNonce) {
+      (window as any).dojoConfig = {
+        cspNonce: nonce
+      };
+    }
+  }
+
   private async initMap() {
+    this._setupCspNonce();
+    
     this.isLoading.set(true);
     this.graphicsLayer = new GraphicsLayer();
     // esriConfig.assetsPath = "./assets/arcgismap";
-    esriConfig.assetsPath = "assets/arcgismap";
+    // esriConfig.assetsPath = "assets/arcgismap";
     this.map = new Map({
       basemap: this.selectedBasemap,
       layers: [this.graphicsLayer]
@@ -74,6 +85,8 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   async toggleView() {
+    this._setupCspNonce();
+    
     const newMode = this._is3D ? '2d' : '3d';
     this.isLoading.set(true);
     
