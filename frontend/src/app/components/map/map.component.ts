@@ -7,7 +7,7 @@ import Graphic from '@arcgis/core/Graphic';
 import Point from '@arcgis/core/geometry/Point';
 import PictureMarkerSymbol from '@arcgis/core/symbols/PictureMarkerSymbol';
 import TextSymbol from '@arcgis/core/symbols/TextSymbol';
-// import esriConfig from "@arcgis/core/config";
+import esriConfig from "@arcgis/core/config";
 
 @Component({
   selector: 'app-map',
@@ -55,8 +55,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   private async initMap() {
     this.isLoading.set(true);
     this.graphicsLayer = new GraphicsLayer();
-    // esriConfig.assetsPath = "./assets/arcgismap";
-    // esriConfig.assetsPath = "assets/arcgismap";
+    esriConfig.assetsPath = "assets/esri";
     this.map = new Map({
       basemap: this.selectedBasemap,
       layers: [this.graphicsLayer]
