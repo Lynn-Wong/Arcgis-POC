@@ -52,18 +52,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly CENTER_LNG = 100.6;
   private readonly CENTER_LAT = -0.5;
 
-  private _setupCspNonce() {
-    const nonce = (window as any).__CSP_NONCE__;
-    if (nonce && !(window as any).dojoConfig?.cspNonce) {
-      (window as any).dojoConfig = {
-        cspNonce: nonce
-      };
-    }
-  }
-
   private async initMap() {
-    this._setupCspNonce();
-    
     this.isLoading.set(true);
     this.graphicsLayer = new GraphicsLayer();
     // esriConfig.assetsPath = "./assets/arcgismap";
@@ -85,8 +74,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   async toggleView() {
-    this._setupCspNonce();
-    
     const newMode = this._is3D ? '2d' : '3d';
     this.isLoading.set(true);
     
