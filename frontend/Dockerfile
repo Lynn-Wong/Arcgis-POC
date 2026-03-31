@@ -13,8 +13,7 @@ RUN rm -rf node_modules \
 COPY . .
 
 RUN npm install --registry=https://registry.npmmirror.com  --legacy-peer-deps
-RUN rm -rf dist .angular node_modules/.cache \
-    && npm run build:prod
+RUN npm run build:prod
 RUN ls -la /app/dist
 
 FROM registry.chengdu.local/osp/nginx:1.21.4 AS production-stage
