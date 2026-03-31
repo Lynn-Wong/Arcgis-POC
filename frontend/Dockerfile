@@ -1,12 +1,20 @@
 FROM node:20-alpine AS build-stage
 WORKDIR /app
 RUN npm install -g @angular/cli@18.2.1 --registry=https://registry.npmmirror.com
-COPY package*.json ./
-RUN npm install --registry=https://registry.npmmirror.com  --legacy-peer-deps
+
+COPY package.json package-lock.json ./
+COPY patches ./patches/
+
+RUN rm -rf node_modules \
+    && rm -rf dist \
+    && rm -rf .angular \
+    && npm ci
+
 COPY . .
-# 打包命令，根据项目调整（Vue是npm run build，React是npm run build）
-RUN npm run build:prod
-# 查看app/目录下的产物
+
+RUN npm install --registry=https://registry.npmmirror.com  --legacy-peer-deps
+RUN rm -rf dist .angular node_modules/.cache \
+    && npm run build:prod
 RUN ls -la /app/dist
 
 FROM registry.chengdu.local/osp/nginx:1.21.4 AS production-stage
