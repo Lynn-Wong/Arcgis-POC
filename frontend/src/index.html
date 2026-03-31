@@ -6,23 +6,8 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <script>
-    window.__CSP_NONCE__ = '{{NONCE}}';
-  </script>
   <script nonce="{{NONCE}}">
-    (function() {
-      var nonce = '{{NONCE}}';
-      if (!nonce) return;
-      
-      var originalCreateElement = Document.prototype.createElement;
-      Document.prototype.createElement = function(tagName, options) {
-        var element = originalCreateElement.call(this, tagName, options);
-        if ((tagName === 'script' || tagName === 'style') && !element.hasAttribute('nonce')) {
-          element.setAttribute('nonce', nonce);
-        }
-        return element;
-      };
-    })();
+    window.__CSP_NONCE__ = '{{NONCE}}';
   </script>
 </head>
 <body>
