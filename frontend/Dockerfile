@@ -5,11 +5,6 @@ RUN npm install -g @angular/cli@18.2.1 --registry=https://registry.npmmirror.com
 COPY package.json package-lock.json ./
 COPY patches ./patches/
 
-RUN rm -rf node_modules \
-    && rm -rf dist \
-    && rm -rf .angular \
-    && npm ci
-
 COPY . .
 
 RUN npm install --registry=https://registry.npmmirror.com  --legacy-peer-deps
