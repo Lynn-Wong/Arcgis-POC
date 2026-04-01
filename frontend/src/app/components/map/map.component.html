@@ -3,11 +3,11 @@
     <button [class.active]="!is3D" (click)="!is3D || toggleView()">2D View</button>
     <button [class.active]="is3D" (click)="is3D || toggleView()">3D View</button>
   </div>
-  Base Map:<select [value]="selectedBasemap" (change)="onBasemapChange($event)">
+  <!-- Base Map:<select [value]="selectedBasemap" (change)="onBasemapChange($event)">
     @for (basemap of basemaps; track basemap.value) {
       <option [value]="basemap.value">{{ basemap.label }}</option>
     }
-  </select>
+  </select> -->
    Fly To:<select [value]="selectedLocation" (change)="onLocationChange($event)">
     @for (location of locations; track location.name) {
       <option [value]="location.name">{{ location.name }}</option>

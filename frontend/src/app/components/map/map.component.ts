@@ -1,8 +1,10 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ElementRef, ViewChild, signal } from '@angular/core';
 import Map from '@arcgis/core/Map';
+import Basemap from '@arcgis/core/Basemap';
 import MapView from '@arcgis/core/views/MapView';
 import SceneView from '@arcgis/core/views/SceneView';
 import GraphicsLayer from '@arcgis/core/layers/GraphicsLayer';
+import TileLayer from '@arcgis/core/layers/TileLayer';
 import Graphic from '@arcgis/core/Graphic';
 import Point from '@arcgis/core/geometry/Point';
 import PictureMarkerSymbol from '@arcgis/core/symbols/PictureMarkerSymbol';
@@ -52,12 +54,21 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly CENTER_LNG = 100.6;
   private readonly CENTER_LAT = -0.5;
 
+  private createBasemap(): Basemap {
+    const tileLayer = new TileLayer({
+      url: 'https://server.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer'
+    });
+    return new Basemap({
+      baseLayers: [tileLayer]
+    });
+  }
+
   private async initMap() {
     this.isLoading.set(true);
     this.graphicsLayer = new GraphicsLayer();
     esriConfig.assetsPath = "assets/esri";
     this.map = new Map({
-      basemap: this.selectedBasemap,
+      basemap: this.createBasemap(),
       layers: [this.graphicsLayer]
     });
 
@@ -83,7 +94,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
     
     if (newMode === '3d') {
       this.map = new Map({
-        basemap: this.selectedBasemap,
+        basemap: this.createBasemap(),
         ground: 'world-surface',
         layers: [this.graphicsLayer]
       });
@@ -98,7 +109,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
       });
     } else {
       this.map = new Map({
-        basemap: this.selectedBasemap,
+        basemap: this.createBasemap(),
         layers: [this.graphicsLayer]
       });
       this.view = new MapView({
@@ -183,7 +194,12 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
     
     this.isLoading.set(true);
     this.selectedBasemap = select.value;
-    this.map.basemap = this.selectedBasemap;
+    
+    if (select.value === 'streets') {
+      this.map.basemap = this.createBasemap();
+    } else {
+      this.map.basemap = this.selectedBasemap;
+    }
     
     await this.view.when();
     this.isLoading.set(false);
